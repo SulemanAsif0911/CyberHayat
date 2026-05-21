@@ -312,12 +312,12 @@ h3 {
 
 .slider-track {
   display: flex;
-  width: 300%;
-  animation: slideAnimation 12s infinite ease-in-out;
+  width: 400%; /* Accommodates 4 slides (3 distinct images + 1 loop anchor) */
+  animation: horizontalSwipeLoop 20s infinite ease-in-out;
 }
 
 .slide {
-  width: 100%;
+  width: 25%; /* Splits the track width perfectly into quarters */
 }
 
 .slide img {
@@ -327,10 +327,18 @@ h3 {
   object-fit: cover;
 }
 
-@keyframes slideAnimation {
-  0%, 28% { transform: translateX(0); }
-  33%, 61% { transform: translateX(-33.333%); }
-  66%, 95% { transform: translateX(-66.666%); }
+/* 20 Seconds Total Duration Pattern (5 Seconds allocated per slide frame):
+  - 0% to 22.5%    (4.5s flat) = Keep Image 1 visible
+  - 25% to 47.5%   (4.5s flat) = Keep Image 2 visible
+  - 50% to 72.5%   (4.5s flat) = Keep Image 3 visible
+  - 75% to 97.5%   (4.5s flat) = Keep Image 4 visible (Loop Copy)
+  - 100%           (Instant)   = Reset position seamlessly back to starting location
+*/
+@keyframes horizontalSwipeLoop {
+  0%, 22.5% { transform: translateX(0); }
+  25%, 47.5% { transform: translateX(-25%); }
+  50%, 72.5% { transform: translateX(-50%); }
+  75%, 97.5% { transform: translateX(-75%); }
   100% { transform: translateX(0); }
 }
 
