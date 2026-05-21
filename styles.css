@@ -299,6 +299,41 @@ h3 {
   border: 0;
 }
 
+/* --- Picture Animation Slider Configuration --- */
+.awareness-slider {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid rgba(34, 246, 255, 0.24);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.slider-track {
+  display: flex;
+  width: 300%;
+  animation: slideAnimation 12s infinite ease-in-out;
+}
+
+.slide {
+  width: 100%;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+@keyframes slideAnimation {
+  0%, 28% { transform: translateX(0); }
+  33%, 61% { transform: translateX(-33.333%); }
+  66%, 95% { transform: translateX(-66.666%); }
+  100% { transform: translateX(0); }
+}
+
 .lead {
   margin-bottom: 0;
   padding-left: 1.3rem;
